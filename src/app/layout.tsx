@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dars — Learning Management System",
-  description: "Simplified Learning Management System",
+  title: "Dars — Open Video Learning",
+  description: "Free, structured video courses and lectures for curious learners.",
   icons: {
     icon: "/icon.png",
   },

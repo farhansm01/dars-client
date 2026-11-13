@@ -11,10 +11,8 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-1 flex flex-col">
-        {/* Hero Banner */}
         <Banner />
 
-        {/* Student Course Listing Section */}
         <section id="courses-section" className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 flex-1">
           <CourseList />
         </section>

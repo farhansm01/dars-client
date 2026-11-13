@@ -48,7 +48,6 @@ export function CourseList() {
 
   return (
     <div className="w-full">
-      {/* Section Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
         <div>
           <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#391486] uppercase tracking-wider mb-2">
@@ -70,7 +69,6 @@ export function CourseList() {
         )}
       </div>
 
-      {/* Loading Skeleton State */}
       {loading && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[1, 2, 3, 4, 5, 6].map((n) => (
@@ -93,7 +91,6 @@ export function CourseList() {
         </div>
       )}
 
-      {/* Error State */}
       {!loading && error && (
         <div className="bg-red-50 border border-red-200 rounded-2xl p-8 text-center max-w-lg mx-auto">
           <AlertCircle className="w-10 h-10 text-red-500 mx-auto mb-3" />
@@ -112,7 +109,6 @@ export function CourseList() {
         </div>
       )}
 
-      {/* Empty State */}
       {!loading && !error && courses.length === 0 && (
         <div className="bg-purple-50/50 border border-purple-100 rounded-2xl p-12 text-center max-w-md mx-auto">
           <BookOpen className="w-12 h-12 text-[#391486]/40 mx-auto mb-3" />
@@ -123,7 +119,6 @@ export function CourseList() {
         </div>
       )}
 
-      {/* Loaded Course Grid */}
       {!loading && !error && courses.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {courses.map((course) => (

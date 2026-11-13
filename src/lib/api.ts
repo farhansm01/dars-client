@@ -1,6 +1,18 @@
+import { authClient } from "./auth-client";
 import { Course, Lecture } from "@/types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+
+async function getAuthHeaders(): Promise<Record<string, string>> {
+  const { data } = await authClient.getSession();
+  if (!data?.session) return { "Content-Type": "application/json" };
+  const { data: tokenData } = await authClient.token();
+  const token = tokenData?.token;
+  return {
+    "Content-Type": "application/json",
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+  };
+}
 
 export async function getCourses(): Promise<Course[]> {
   const res = await fetch(`${API_URL}/courses`, { cache: "no-store" });
@@ -24,9 +36,10 @@ export async function createCourse(data: {
   price: number;
   thumbnail: string;
 }): Promise<Course> {
+  const headers = await getAuthHeaders();
   const res = await fetch(`${API_URL}/courses`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify(data),
   });
   if (!res.ok) {
@@ -45,9 +58,10 @@ export async function updateCourse(
     thumbnail: string;
   }
 ): Promise<Course> {
+  const headers = await getAuthHeaders();
   const res = await fetch(`${API_URL}/courses/${id}`, {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify(data),
   });
   if (!res.ok) {
@@ -58,8 +72,10 @@ export async function updateCourse(
 }
 
 export async function deleteCourse(id: string): Promise<void> {
+  const headers = await getAuthHeaders();
   const res = await fetch(`${API_URL}/courses/${id}`, {
     method: "DELETE",
+    headers,
   });
   if (!res.ok) {
     const error = await res.json().catch(() => ({}));
@@ -85,9 +101,10 @@ export async function createLecture(
     videoUrl: string;
   }
 ): Promise<Lecture> {
+  const headers = await getAuthHeaders();
   const res = await fetch(`${API_URL}/courses/${courseId}/lectures`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify(data),
   });
   if (!res.ok) {
@@ -105,9 +122,10 @@ export async function updateLecture(
     videoUrl: string;
   }
 ): Promise<Lecture> {
+  const headers = await getAuthHeaders();
   const res = await fetch(`${API_URL}/lectures/${id}`, {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify(data),
   });
   if (!res.ok) {
@@ -118,8 +136,10 @@ export async function updateLecture(
 }
 
 export async function deleteLecture(id: string): Promise<void> {
+  const headers = await getAuthHeaders();
   const res = await fetch(`${API_URL}/lectures/${id}`, {
     method: "DELETE",
+    headers,
   });
   if (!res.ok) {
     const error = await res.json().catch(() => ({}));

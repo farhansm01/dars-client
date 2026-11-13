@@ -13,7 +13,7 @@ export function Banner() {
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
-      {/* Hero Banner Card with your Artwork Image */}
+      {/* Hero Banner Card  */}
       <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-xs border border-purple-100 bg-[#391486] min-h-[340px] sm:min-h-[400px] flex items-center">
         
         {/* Background Banner Image */}
@@ -34,7 +34,7 @@ export function Banner() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-white text-xs sm:text-sm font-medium mb-4 ring-1 ring-white/20">
             <BookOpen className="w-4 h-4 text-purple-200" />
-            <span>Open Learning Platform</span>
+            <span>Online Learning Platform</span>
           </div>
 
           {/* Heading */}
@@ -44,7 +44,7 @@ export function Banner() {
 
           {/* Subtitle */}
           <p className="mt-3 sm:mt-4 text-sm sm:text-base text-purple-100/90 leading-relaxed max-w-lg">
-            Watch step-by-step video lectures, explore diverse topics, and master new skills whenever you're ready.
+            Watch step-by-step video lectures, explore diverse topics, and master new skills whenever you are ready.
           </p>
 
           {/* Action Button */}
@@ -67,16 +67,16 @@ export function Banner() {
       {/* 3 Quick Highlights Section */}
       <div className="grid grid-cols-3 gap-3 sm:gap-6 mt-6 max-w-4xl mx-auto text-center">
         <div className="bg-white border border-purple-100/80 rounded-xl py-3.5 px-3 sm:py-5 sm:px-4 shadow-xs">
-          <p className="text-xl sm:text-3xl font-extrabold text-[#391486]">100%</p>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1 font-medium">Free Access</p>
+          <p className="text-xl sm:text-3xl font-extrabold text-[#391486]">Curated</p>
+          <p className="text-xs sm:text-sm text-gray-500 mt-1 font-medium">Quality Courses</p>
         </div>
         <div className="bg-white border border-purple-100/80 rounded-xl py-3.5 px-3 sm:py-5 sm:px-4 shadow-xs">
           <p className="text-xl sm:text-3xl font-extrabold text-[#391486]">Video</p>
           <p className="text-xs sm:text-sm text-gray-500 mt-1 font-medium">Rich Lectures</p>
         </div>
         <div className="bg-white border border-purple-100/80 rounded-xl py-3.5 px-3 sm:py-5 sm:px-4 shadow-xs">
-          <p className="text-xl sm:text-3xl font-extrabold text-[#391486]">Simple</p>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1 font-medium">Direct Learning</p>
+          <p className="text-xl sm:text-3xl font-extrabold text-[#391486]">Flexible</p>
+          <p className="text-xs sm:text-sm text-gray-500 mt-1 font-medium">Learn Anytime</p>
         </div>
       </div>
     </section>

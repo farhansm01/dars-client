@@ -2,6 +2,7 @@
 
 import { Navbar } from "@/components/Navbar";
 import { Banner } from "@/components/Banner";
+import { CourseList } from "@/components/CourseList";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -13,9 +14,9 @@ export default function Home() {
         {/* Hero Banner */}
         <Banner />
 
-        {/* Courses & Learning Content Section */}
-        <section id="courses-section" className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1">
-          {/* Courses and Lectures will be placed here */}
+        {/* Student Course Listing Section */}
+        <section id="courses-section" className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 flex-1">
+          <CourseList />
         </section>
       </main>
 

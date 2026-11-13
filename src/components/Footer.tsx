@@ -18,7 +18,7 @@ export function Footer() {
           />
           <span className="hidden sm:inline text-gray-300">|</span>
           <p className="text-xs sm:text-sm text-gray-500">
-            Free, structured video courses for every curious learner.
+            Structured video courses and lectures for curious learners.
           </p>
         </div>
 

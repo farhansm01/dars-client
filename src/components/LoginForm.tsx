@@ -42,7 +42,6 @@ export function LoginForm({
 
   return (
     <div className="w-full max-w-md bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-      {/* Header */}
       <div className="p-6 border-b border-gray-100 bg-gray-50/50 text-center">
         <div className="w-12 h-12 rounded-xl bg-purple-100 text-[#391486] flex items-center justify-center mx-auto mb-3">
           <Lock className="w-6 h-6" />
@@ -51,7 +50,6 @@ export function LoginForm({
         <p className="text-xs text-gray-500 mt-1">{subtitle}</p>
       </div>
 
-      {/* Form */}
       <form onSubmit={handleSubmit} className="p-6 space-y-4">
         {error && (
           <div className="flex items-start gap-2 p-3 text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg">
@@ -106,4 +104,3 @@ export function LoginForm({
     </div>
   );
 }
-

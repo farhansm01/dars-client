@@ -17,7 +17,6 @@ import {
 function getEmbedUrl(url: string): { type: "youtube" | "video"; src: string } {
   if (!url) return { type: "video", src: "" };
 
-  // youtu.be short link
   const shortMatch = url.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
   if (shortMatch) {
     return {
@@ -26,7 +25,6 @@ function getEmbedUrl(url: string): { type: "youtube" | "video"; src: string } {
     };
   }
 
-  // youtube.com/watch?v=...
   const watchMatch = url.match(/[?&]v=([a-zA-Z0-9_-]+)/);
   if (watchMatch) {
     return {
@@ -35,7 +33,6 @@ function getEmbedUrl(url: string): { type: "youtube" | "video"; src: string } {
     };
   }
 
-  // already an embed URL
   if (url.includes("youtube.com/embed/")) {
     return { type: "youtube", src: url };
   }
@@ -121,7 +118,6 @@ export default function CoursePage() {
       <Navbar />
 
       <main className="flex-1">
-        {/* Back link */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
           <button
             onClick={() => router.push("/#courses-section")}
@@ -132,7 +128,6 @@ export default function CoursePage() {
           </button>
         </div>
 
-        {/* Course header */}
         <div className="bg-[#391486] text-white mt-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row sm:items-center gap-4">
             <div className="flex-1">
@@ -164,7 +159,6 @@ export default function CoursePage() {
           </div>
         </div>
 
-        {/* Content: player + lecture list */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {lectures.length === 0 ? (
             <div className="text-center py-20 text-gray-400">
@@ -174,7 +168,6 @@ export default function CoursePage() {
             </div>
           ) : (
             <div className="flex flex-col lg:flex-row gap-6">
-              {/* Video Player */}
               <div className="flex-1 min-w-0">
                 <div className="bg-black rounded-xl overflow-hidden aspect-video w-full shadow-lg">
                   {embed?.type === "youtube" ? (
@@ -196,7 +189,6 @@ export default function CoursePage() {
                   ) : null}
                 </div>
 
-                {/* Active lecture info */}
                 {activeLecture && (
                   <div className="mt-4">
                     <h2 className="text-lg font-semibold text-gray-900">
@@ -211,7 +203,6 @@ export default function CoursePage() {
                 )}
               </div>
 
-              {/* Lecture Sidebar */}
               <div className="w-full lg:w-80 xl:w-96 flex-shrink-0">
                 <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
                   Course Content

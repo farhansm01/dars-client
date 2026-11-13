@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { X, Loader2, AlertCircle, Image as ImageIcon } from "lucide-react";
+import { X, Loader2, AlertCircle } from "lucide-react";
 import { Course } from "@/types";
 import { createCourse, updateCourse } from "@/lib/api";
 
@@ -92,7 +92,7 @@ function CourseForm({
           rows={3}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          placeholder="Detailed course description covering topics and outcomes..."
+          placeholder="Detailed course description..."
           className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-[#391486] focus:ring-1 focus:ring-[#391486]"
         />
       </div>
@@ -107,7 +107,7 @@ function CourseForm({
             required
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            placeholder="49.99"
+            placeholder="4500"
             className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-[#391486] focus:ring-1 focus:ring-[#391486]"
           />
         </div>
@@ -118,29 +118,11 @@ function CourseForm({
             required
             value={thumbnail}
             onChange={(e) => setThumbnail(e.target.value)}
-            placeholder="https://images.unsplash.com/..."
+            placeholder="https://example.com/image.jpg"
             className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-[#391486] focus:ring-1 focus:ring-[#391486]"
           />
         </div>
       </div>
-
-      {thumbnail && (
-        <div className="p-2 border border-purple-100 rounded-lg bg-purple-50/30 flex items-center gap-3">
-          <div className="w-16 h-10 rounded overflow-hidden bg-gray-100 shrink-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={thumbnail}
-              alt="Preview"
-              className="w-full h-full object-cover"
-              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-            />
-          </div>
-          <span className="text-xs text-gray-500 flex items-center gap-1">
-            <ImageIcon className="w-3.5 h-3.5 text-[#391486]" />
-            Image preview
-          </span>
-        </div>
-      )}
 
       <div className="flex items-center justify-end gap-3 pt-3 border-t border-gray-100">
         <button type="button" onClick={onClose} className="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg transition">
@@ -173,7 +155,6 @@ export function CourseModal({ isOpen, onClose, onSuccess, courseToEdit }: Course
             <X className="w-5 h-5" />
           </button>
         </div>
-        {/* key resets all form state when switching between edit targets */}
         <CourseForm key={courseToEdit?._id ?? "new"} courseToEdit={courseToEdit} onClose={onClose} onSuccess={onSuccess} />
       </div>
     </div>

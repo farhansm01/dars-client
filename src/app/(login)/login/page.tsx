@@ -19,7 +19,6 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50 px-4 py-12">
-      {/* Return to website */}
       <div className="mb-6">
         <Link
           href="/"
@@ -30,7 +29,6 @@ export default function LoginPage() {
         </Link>
       </div>
 
-      {/* Brand Logo */}
       <div className="mb-8 text-center">
         <Link href="/" className="inline-block">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -42,9 +40,7 @@ export default function LoginPage() {
         </Link>
       </div>
 
-      {/* Standalone Login Form */}
       <LoginForm onSuccess={() => router.push("/admin")} />
     </div>
   );
 }
-

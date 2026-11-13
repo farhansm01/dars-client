@@ -76,7 +76,7 @@ function LectureForm({
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="e.g. 01. Course Introduction & Setup"
+          placeholder="e.g. Course Introduction & Setup"
           className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-[#391486] focus:ring-1 focus:ring-[#391486]"
         />
       </div>
@@ -88,26 +88,23 @@ function LectureForm({
           rows={3}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          placeholder="Overview of what is taught in this lecture..."
+          placeholder="Lecture overview and topics..."
           className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-[#391486] focus:ring-1 focus:ring-[#391486]"
         />
       </div>
 
       <div>
         <label className="block text-xs font-semibold text-gray-700 mb-1">
-          Video URL (YouTube or Direct) *
+          Video URL *
         </label>
         <input
           type="url"
           required
           value={videoUrl}
           onChange={(e) => setVideoUrl(e.target.value)}
-          placeholder="https://www.youtube.com/watch?v=... or https://..."
+          placeholder="https://www.youtube.com/watch?v=..."
           className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-[#391486] focus:ring-1 focus:ring-[#391486]"
         />
-        <p className="mt-1 text-[11px] text-gray-400">
-          Supports standard YouTube URLs or direct video links.
-        </p>
       </div>
 
       <div className="flex items-center justify-end gap-3 pt-3 border-t border-gray-100">
@@ -144,7 +141,6 @@ export function LectureModal({ isOpen, courseId, onClose, onSuccess, lectureToEd
             <X className="w-5 h-5" />
           </button>
         </div>
-        {/* key resets form state when switching between edit targets */}
         <LectureForm key={lectureToEdit?._id ?? "new"} courseId={courseId} lectureToEdit={lectureToEdit} onClose={onClose} onSuccess={onSuccess} />
       </div>
     </div>

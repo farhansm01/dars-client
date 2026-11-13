@@ -1,18 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen, ExternalLink, LogOut, Shield } from "lucide-react";
+import { BookOpen, Video, ExternalLink, LogOut, Shield } from "lucide-react";
 import { signOut, useSession } from "@/lib/auth-client";
 
 interface AdminSidebarProps {
-  currentTab?: "courses";
-  onTabChange?: (tab: "courses") => void;
-  onLoginClick?: () => void;
+  currentView: "courses" | "lectures";
+  onSelectCourses: () => void;
+  onSelectLectures: () => void;
 }
 
 export function AdminSidebar({
-  currentTab = "courses",
-  onLoginClick,
+  currentView,
+  onSelectCourses,
+  onSelectLectures,
 }: AdminSidebarProps) {
   const { data: session } = useSession();
 
@@ -26,7 +27,6 @@ export function AdminSidebar({
 
   return (
     <aside className="w-64 bg-white border-r border-gray-200 flex flex-col shrink-0 min-h-screen">
-      {/* Logo & Back to Homepage */}
       <div className="p-5 border-b border-gray-100">
         <Link
           href="/"
@@ -45,7 +45,6 @@ export function AdminSidebar({
         </Link>
       </div>
 
-      {/* Navigation Links */}
       <nav className="flex-1 p-4 space-y-1">
         <div className="px-3 py-2 text-[11px] font-bold text-gray-400 uppercase tracking-wider">
           Management
@@ -53,14 +52,28 @@ export function AdminSidebar({
 
         <button
           type="button"
+          onClick={onSelectCourses}
           className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition cursor-pointer ${
-            currentTab === "courses"
+            currentView === "courses"
               ? "bg-[#391486] text-white shadow-xs"
               : "text-gray-600 hover:bg-purple-50 hover:text-[#391486]"
           }`}
         >
           <BookOpen className="w-4 h-4" />
           <span>Courses</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={onSelectLectures}
+          className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition cursor-pointer ${
+            currentView === "lectures"
+              ? "bg-[#391486] text-white shadow-xs"
+              : "text-gray-600 hover:bg-purple-50 hover:text-[#391486]"
+          }`}
+        >
+          <Video className="w-4 h-4" />
+          <span>Lectures</span>
         </button>
 
         <div className="pt-4 px-3 py-2 text-[11px] font-bold text-gray-400 uppercase tracking-wider">
@@ -78,7 +91,6 @@ export function AdminSidebar({
         </Link>
       </nav>
 
-      {/* Admin User / Logout Footer */}
       <div className="p-4 border-t border-gray-100 bg-gray-50/50">
         {session?.user ? (
           <div className="space-y-3">
@@ -105,17 +117,8 @@ export function AdminSidebar({
               <span>Log out</span>
             </button>
           </div>
-        ) : (
-          <button
-            type="button"
-            onClick={onLoginClick}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-white bg-[#391486] hover:bg-[#4B1C9E] rounded-lg shadow-xs transition cursor-pointer"
-          >
-            <span>Admin Sign In</span>
-          </button>
-        )}
+        ) : null}
       </div>
     </aside>
   );
 }
-

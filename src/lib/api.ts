@@ -2,8 +2,6 @@ import { Course, Lecture } from "@/types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
-// --- Course API ---
-
 export async function getCourses(): Promise<Course[]> {
   const res = await fetch(`${API_URL}/courses`, { cache: "no-store" });
   if (!res.ok) {
@@ -68,8 +66,6 @@ export async function deleteCourse(id: string): Promise<void> {
     throw new Error(error.message || "Failed to delete course");
   }
 }
-
-// --- Lecture API ---
 
 export async function getCourseLectures(courseId: string): Promise<Lecture[]> {
   const res = await fetch(`${API_URL}/courses/${courseId}/lectures`, {

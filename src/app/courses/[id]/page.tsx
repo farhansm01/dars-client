@@ -54,7 +54,10 @@ export default function CoursePage() {
     if (!id) return;
     let ignore = false;
 
-    Promise.all([getCourse(id), getCourseLectures(id)])
+    Promise.all([
+      getCourse(id),
+      getCourseLectures(id).catch(() => []),
+    ])
       .then(([courseData, lectureData]) => {
         if (ignore) return;
         setCourse(courseData);
